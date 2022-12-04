@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+{% extends "layout.html" %}
+{% block body %}
+
+<h2 class="page_title">Register</h2>
+
+{% if error %}
+    <h2 class="user__title">Error:{{ error }}</h2>
+{% endif %}
+
+{% if is_registered%}
+    <h2 class="user__title">You are successfully registered, now you can log in</h2>
+{% endif %}
+
+<div class="user">
+
+    <form action="{{ url_for('register') }}" method=post class="form">
+        <div class="form__group">
+            <input type="text" placeholder="Username" class="form__input" name=username />
+        </div>
+
+
+        <div class="form__group">
+            <input type="password" placeholder="Password" class="form__input"  name="password" />
+        </div>
+
+       <input class="btn" type=submit value=Register>
+    </form>
+</div>
+
+{% endblock %}

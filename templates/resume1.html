@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends "layout.html" %}
+{% block body %}
+
+<h2 class="page_title">My resume</h2>
+
+{% if not session.logged_in %}
+    <h2 class="user__title">Error: you are not logged in</h2>
+{% endif %}
+
+<div class="user">
+
+    <form action="{{ url_for('resume') }}" method=post class="form">
+        <div class="form__group">
+            <input type="text" placeholder="Name" class="form__input" name=name value={{saved_resume["name"]}} >
+        </div>
+        <div class="form__group">
+            <input type="text" placeholder="Surname" class="form__input" name=surname value={{saved_resume["surname"]}} >
+        </div>
+        <div class="form__group">
+            <input type="text" placeholder="Age" class="form__input" name=age value={{saved_resume["age"]}} >
+        </div>
+        <div class="form__group">
+            <input type="text" placeholder="Education" class="form__input" name=education value={{saved_resume["education"]}} >
+        </div>
+        <div class="form__group">
+            <input type="text" placeholder="Job Position" class="form__input" name=job_position value={{saved_resume["job_position"]}} >
+        </div>
+        <div class="form__group">
+            <input type="text" placeholder="Previous workplace" class="form__input" name=previous_workplace value={{saved_resume["previous_workplace"]}} >
+        </div>
+        <div class="form__group">
+            <input type="text" placeholder="Projects" class="form__input" name=projects value={{saved_resume["projects"]}} >
+        </div>
+
+        <input class="btn" type=submit value=Save name=save>
+        <input class="btn" type=submit value="Get pdf" name=get>
+    </form>
+</div>
+
+{% endblock %}

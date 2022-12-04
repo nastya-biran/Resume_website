@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+    <title>Resume</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='beautiful.css', _external=True) }}">
+</head>
+
+
+<div class=page>
+<h1>Resume</h1>
+
+<div class=metanav>
+
+{% if not session.logged_in %}
+    <div>
+        <a href="{{ url_for('login') }}">
+            <h3>Log in</h3>
+        </a>
+        <a href="{{ url_for('register') }}">
+            <h3>Register</h3>
+        </a>
+    </div>
+    {% else %}
+    <div>
+         <a href="{{ url_for('logout') }}">
+            <h3>Logout</h3>
+        </a>
+        <a href="{{ url_for('resume') }}">
+            <h3>My resume</h3>
+        </a>
+    </div>
+   {% endif %}
+
+</div>
+
+{% block body %}{% endblock %}
+
+</div>
